@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+  </head>
+
+  <body>
+    <form action="" method="post">
+      {% csrf_token %}
+      <label for="namedb">Name</label>
+      <input type="text" name="namedb"><br>
+
+      <label for="emaildb">Email</label>
+      <input type="text" name="emaildb"><br>
+
+      <label for="phonedb">Phone</label>
+      <input type="text" name="phonedb"><br>
+
+      <input type="submit" value="Add">
+    </form>
+
+    <br><br><br>
+
+    {% for line in value %}
+    {{line.id}} {{line.namedb}} {{line.emaildb}} {{line.phonedb}}
+    <a href="{% url 'updateRec' id=line.id %}">Update</a>
+    <a href="{% url 'deleteRec' id=line.id %}">Delete</a>
+    <br>
+    {% endfor %}
+
+
+  </body>
+
+</html>
